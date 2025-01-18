@@ -5,23 +5,6 @@ import threading
 import json
 import base64
 
-def install_and_import(package):
-    """
-    安装并导入一个包。
-
-    Args:
-        package: 要安装的包的名称。
-    """
-    try:
-        __import__(package)
-    except ImportError:
-        print(f"缺少模块 {package}，正在安装...")
-        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-        print(f"模块 {package} 安装完成。")
-
-# 安装并导入所需的包
-install_and_import("flask")
-
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
